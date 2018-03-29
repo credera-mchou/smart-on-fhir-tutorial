@@ -26,8 +26,13 @@
                     type: 'Condition'
                 });
 
+                var diagnosis = smart.patient.api.fetchAll({
+                    type: 'DiagnosticReport'
+                });
+
                 $.when(pt, obv).fail(onError);
                 $.when(pt, condition).fail(onError);
+                $.when(pt, diagnosis).fail(onError);
 
                 $.when(pt, condition).done(function(patient, conditions) {
                     var gender = patient.gender;
